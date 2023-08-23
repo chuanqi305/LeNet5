@@ -1,24 +1,24 @@
 # LeNet5
 Pure numpy implementation of LeNet5, to help you understand how CNN works.
-### prerequisite
-1. python
-2. numpy
-3. opencv
+### Prerequisite
+- python3
+- numpy
+- gzip
+- urllib
 ```
 pip install numpy
-pip install opencv-python
+pip install gzip
+pip install urllib
 ```
-### usage
-1. Get mnist [datasets](https://pan.baidu.com/s/1VyVAZ7ZnyD_mwfBu3RM7xg) and put it into the project root directory, then decompress it.
-2. train
+### Notes
+The MNIST dataset will automatically be downloaded from http://yann.lecun.com/exdb/mnist/ as needed.
+
+### Run
+1. Run a training:
 ```
 python train.py
 ```
-3. test
-```
-python test.py
-```
-4. Maybe you want to evaluate the accuracy
+2. Evaluate the accuracy on the validation dataset:
 ```
 python eval.py
 ```

@@ -1,4 +1,3 @@
-import os
 import numpy as np
 
 class Trainable(object):
@@ -31,7 +30,10 @@ class Conv(Trainable):
     def forward(self, x):
         self.x = x
         k = self.kernel
-        n, h, w, c = x.shape
+        n = x.shape[0]
+        h = x.shape[1]
+        w = x.shape[2]
+        #c = x.shape[3]
         h_out = h - (k - 1)
         w_out = w - (k - 1)
         weight = self.weight.reshape(-1, self.outc)
@@ -162,9 +164,14 @@ class LeNet:
     def train(self, images, labels):
         index = 0
         batch_size = Trainable.batch_size
+        
+        label_array = np.zeros((len(labels), 10))
+        for i, label in enumerate(labels):
+            label_array[i, label] = 1
+
         for i in range(Trainable.max_step):
             x = images[index:index + batch_size] #mini batch sgd
-            y = labels[index:index + batch_size]
+            y = label_array[index:index + batch_size]
             index += batch_size
             index = index % len(images)
 
